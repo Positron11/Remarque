@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language id="remarque" _name="Remarqué" version="2.0" _section="Markup">
+
+<metadata>
+	<property name="mimetypes">text/plain</property>
+	<property name="globs">*.rmq</property>
+</metadata>
+
+
+<styles>
+	<style id="bold" _name="bold" map-to="remarque:bold"/>
+	<style id="italic" _name="italic" map-to="remarque:italic"/>
+	<style id="tree" _name="tree" map-to="remarque:tree"/>
+	<style id="done" _name="done" map-to="remarque:done"/>
+	<style id="banner" _name="banner" map-to="remarque:banner"/>
+	<style id="current" _name="current" map-to="remarque:current"/>
+	<style id="enumeration" _name="enumeration"	map-to="remarque:enumeration"/>
+	<style id="heading" _name="heading"	map-to="remarque:heading"/>
+	<style id="subheading" _name="subheading" map-to="remarque:subheading"/>
+	<style id="tag" _name="tag"	map-to="remarque:tag"/>
+	<style id="placeholder" _name="placeholder"	map-to="remarque:placeholder"/>
+	<style id="link" _name="link" map-to="remarque:link"/>
+</styles>
+
+
+<definitions>
+	<context id="remarque">
+		<include>
+		
+			<context id="bold" style-ref="bold">
+				<start>\*\*</start>
+				<end>\*\*</end>
+			</context>
+			
+			<context id="italic" style-ref="italic">
+				<start>\*</start>
+				<end>\*</end>
+			</context>
+		
+			<context id="tree" style-ref="tree" end-at-line-end="true">
+				<start>^\|</start>
+				<end>&gt;</end>
+				
+				<include>
+					<context id="enumeration" style-ref="enumeration">
+						<match>[0-9]+</match>
+					</context>
+					
+					<context id="current" style-ref="current" end-parent="true">
+						<match>\|?=&gt;</match>
+					</context>
+				</include>
+			</context>
+			
+			<context id="done" style-ref="done">
+				<match>.*✔</match>
+			</context>
+			
+			<context id="banner" style-ref="banner">
+				<match> &lt;=\|.*$</match>
+			</context>
+			
+			<context id="heading" style-ref="heading">
+				<match>^=*$</match>
+			</context>
+			
+			<context id="subheading" style-ref="subheading">
+				<match>^-*$</match>
+			</context>
+			
+			<context id="tag" style-ref="tag">
+				<start>\[</start>
+				<end>\]</end>
+			</context>
+			
+			<context id="placeholder" style-ref="placeholder">
+				<start>&lt;</start>
+				<end>&gt;</end>
+			</context>
+			
+			<context id="link" style-ref="link">
+				<match>https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*)</match>
+			</context>
+			
+		</include>
+	</context>
+</definitions>
+</language>
