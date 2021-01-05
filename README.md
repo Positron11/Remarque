@@ -79,8 +79,8 @@ Everything below (except text formatting) works without any special language and
 
     ```
     |-> Text can be:
-    |1-> **Bold**
-    |2-> *Italic*
+    | -> **Bold**
+    | -> *Italic*
     ```
 
 
