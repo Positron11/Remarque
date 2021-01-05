@@ -27,7 +27,9 @@ Everything below (except text formatting) works without any special language and
         Subheading
         ----------
         ```
-
+	
+	Headings should be followed by one empty newline, and Subheadings should be spaced by two empty newlines. They don't have to be, they just tend to look better that way.
+	
 * ### Tree
 
     ```
@@ -64,13 +66,22 @@ Everything below (except text formatting) works without any special language and
 
 * ### Objects
         
-     * #### Index: `[1.1.5]`
-     * #### Placeholder: `<none>`
+    ```
+    |-> Items can be indexed [1.1]
+    | -> Like so [1.1.1]
+    | -> And placeholders are defined as: <placeholder> [1.1.2]
+    |
+    | -> To Do [1.1.3]
+    | |-> <none> [1.1.3.1]
+    ```
 
 * ### Text Formatting
-        
-     * #### Bold: `**Some text**`
-     * #### Italic: `*Some text*`
+
+    ```
+    |-> Text can be:
+    |1-> **Bold**
+    |2-> *Italic*
+    ```
 
 
 ## Syntax Formatting Installation & Usage
