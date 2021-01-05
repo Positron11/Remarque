@@ -55,7 +55,7 @@
 			</context>
 			
 			<context id="banner" style-ref="banner">
-				<match> &lt;=\|.*$</match>
+				<match>&lt;=\|.*$</match>
 			</context>
 			
 			<context id="heading" style-ref="heading">
