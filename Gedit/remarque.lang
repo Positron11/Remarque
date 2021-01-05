@@ -28,13 +28,11 @@
 		<include>
 		
 			<context id="bold" style-ref="bold">
-				<start>\*\*</start>
-				<end>\*\*</end>
+				<match>\*\*[^\* \t].*?(?&lt;!\\|\*| |\t)\*\*</match>
 			</context>
 			
 			<context id="italic" style-ref="italic">
-				<start>\*</start>
-				<end>\*</end>
+				<match>\*[^\* \t].*?(?&lt;!\\|\*| |\t)\*</match>
 			</context>
 		
 			<context id="tree" style-ref="tree" end-at-line-end="true">
