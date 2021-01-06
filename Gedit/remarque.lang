@@ -67,13 +67,11 @@
 			</context>
 			
 			<context id="tag" style-ref="tag">
-				<start>\[</start>
-				<end>\]</end>
+				<match>\[(?! |\t)[^\[\]]+(?&lt;!\[|\]| |\t)\]</match>
 			</context>
 			
 			<context id="placeholder" style-ref="placeholder">
-				<start>&lt;</start>
-				<end>&gt;</end>
+				<match>\&lt;(?! |\t)[^\&lt;\&gt;]+(?&lt;!\&lt;|\&gt;| |\t)\&gt;</match>
 			</context>
 			
 			<context id="link" style-ref="link">
