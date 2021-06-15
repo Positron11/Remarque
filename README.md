@@ -84,21 +84,21 @@ Everything below (except text formatting) works without any special language and
     ```
 
 
-## Syntax Formatting Installation & Usage
+## Installation & Usage
 
 ### Gedit
 
 * #### Language
 
     ```bash
-    git clone https://github.com/Positron11/remarque.git && cd remarque
-    sudo cp Gedit/remarque.lang /usr/share/gtksourceview-4/language-specs/
+    git clone https://github.com/Positron11/remarque.git
+    sudo mv remarque/Gedit/remarque.lang /usr/share/gtksourceview-4/language-specs/
     sudo chmod 0644 /usr/share/gtksourceview-4/language-specs/remarque.lang
     ```
 
 * #### Color Scheme
 
-    Because of Remarqué's styling, you'll need to use a color scheme that supports Remarqué. At present, the only such schemes are the **[Agenwulf](https://github.com/Positron11/agenwulf-color-scheme)** color schemes (as shown in the example image - available in light and dark mode, and they're not bad too - check them out), but you can easily add Remarqué support to your favourite color schemes like so:
+    Because of Remarqué's styling, you'll need to use a color scheme that supports Remarqué. At present, the only such schemes are the **[Agenwulf](https://github.com/Positron11/agenwulf-color-scheme)** color schemes (as shown in the example image - available in light and dark mode), but you can easily add Remarqué support to your favourite color schemes like so:
 
     1. Find your preferred scheme's `.xml` file
     2. Add the following between the `<style-scheme>` tags, and modify values as you'd like:
