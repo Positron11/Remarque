@@ -154,3 +154,7 @@ Tree lists can be used as advanced to-do lists or planners for productivity purp
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 All code written by Aarush Kumbhakern. README created with [Apostrophe](https://apps.gnome.org/app/org.gnome.gitlab.somas.Apostrophe/).
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
