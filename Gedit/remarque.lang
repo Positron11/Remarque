@@ -13,6 +13,7 @@
 	<style id="underline" _name="underline" map-to="remarque:underline"/>
 	<style id="strikethrough" _name="strikethrough" map-to="remarque:strikethrough"/>
 	<style id="highlight" _name="highlight" map-to="remarque:highlight"/>
+	<style id="inline-code" _name="inline-code" map-to="remarque:inline-code"/>
 	<style id="tree" _name="tree" map-to="remarque:tree"/>
 	<style id="done" _name="done" map-to="remarque:done"/>
 	<style id="banner" _name="banner" map-to="remarque:banner"/>
@@ -48,6 +49,10 @@
 			
 			<context id="highlight" style-ref="highlight">
 				<match>\![^\! \t].*?(?&lt;!\\|\!| |\t)\!</match>
+			</context>
+			
+			<context id="inline-code" style-ref="inline-code">
+				<match>`[^` \t].*?(?&lt;!\\|`| |\t)`</match>
 			</context>
 		
 			<context id="tree" style-ref="tree" end-at-line-end="true">
