@@ -1,3 +1,5 @@
+<img src="example.png">
+
 # Remarqué
 
 Remarque is a tree-based note-taking language for Gedit. Its usefulness lies more in its structure than any syntax highlighting, so a particularly zen user might consider this non-essential (and it is, really).
