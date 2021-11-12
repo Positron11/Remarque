@@ -1,36 +1,35 @@
-FILE HEADING
-============
+@FILE HEADING
+=============
 
-[1] Tree Example 
-----------------
+
+&Tree Example 
+-------------
 |-> Level 1
-| -> Level 2
-| |-> Level 3
-| | -> Level 4
-| | |-> Level 5
-| | | -> Level 6
-| | | |-> And so on...
+| |-> Level 2
+| | |-> Level 3
+| | | |-> Level 4
+| | | | |-> Level 5
+| | | | | |-> And so on...
 
 
-[2] Enumeration, Indexing, and Productivity
--------------------------------------------
+&Enumeration, Indexing, and Productivity
+----------------------------------------
 |-> Items can be enumerated [2.1]
-|1-> Item 1 [2.1.1]
-|2-> Item 1 [2.1.2]
-|3-> Item 1 [2.1.3]
+|1|-> Item 1 [2.1.1]
+|2|-> Item 1 [2.1.2]
+|3|-> Item 1 [2.1.3]
 |
 |-> Productivity (Todo) [2.2]
-| -> Item 1 (to do) [2.2.1] 
-| => Item 1 (current) [2.2.2]
-| -> Item 1 (finished) [2.2.3] ✔ 
+| |-> Item 1 (to do) [2.2.1] 
+| |-> Item 1 (finished) [2.2.3] ✔
+| |=> Item 1 (current) [2.2.2]
 | 
-|-> Items can be indexed like so >>=> [2.3]
+|-> Items can be indexed like so: [2.3]
 
 
-[3] Text Formatting
--------------------
-|-> Text can be **Bold**
-|-> Text can also be *Italic*
+&Text Formatting 
+----------------
 |-> Text can be placed into <placeholders>
 |-> Lines of text can be tagged/commented <=|Comment/Tag
-|-> Links like https://en.wikipedia.org/wiki/Hyperlink are automatically formatted
+|-> Text can be **Bold**, *Italic*, _underlined_, ~struck through~, and !highlighted! 
+|-> Hyperlinks (https://en.wikipedia.org/wiki/Hyperlink) are automatically formatted
