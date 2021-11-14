@@ -95,6 +95,12 @@ Remarqué offers a few text objects, essentially blocks of text with a somewhat 
 	<placeholder text>
 	```
 
+- **Inline code block:** Put code between `` ` `` with no space between the backticks and the code to be formatted.
+	
+	```
+	`def function():`  
+	```
+
 ### Text Formatting
 
 This part of Remarqué attempts to make use of what limited text formatting capabilities Gedit offers and [**requires a Gedit colour scheme that supports Remarqué**](#gedit-colour-scheme). GTKSourceViewLang's selector protocol unfortunately doesn't allow for nested selectors, so we'll have to make do with one style at a time (for now).
