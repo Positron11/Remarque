@@ -21,8 +21,9 @@
 |
 |-> Productivity (Todo) [2.2]
 | |-> Item 1 (to do) [2.2.1] 
-| |-> Item 1 (finished) [2.2.3] ✔
-| |=> Item 1 (current) [2.2.2]
+| |-> Item 2 (finished) [2.2.3] :d
+| |-> Item 3 (failed) [2.2.4] :f
+| |=> Item 4 (current) [2.2.5]
 | 
 |-> Items can be indexed like so: [2.3]
 

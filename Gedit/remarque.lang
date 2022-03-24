@@ -16,6 +16,7 @@
 	<style id="inline-code" _name="inline-code" map-to="remarque:inline-code"/>
 	<style id="tree" _name="tree" map-to="remarque:tree"/>
 	<style id="done" _name="done" map-to="remarque:done"/>
+	<style id="failed" _name="failed" map-to="remarque:failed"/>
 	<style id="banner" _name="banner" map-to="remarque:banner"/>
 	<style id="current" _name="current" map-to="remarque:current"/>
 	<style id="enumeration" _name="enumeration"	map-to="remarque:enumeration"/>
@@ -71,7 +72,11 @@
 			</context>
 			
 			<context id="done" style-ref="done">
-				<match>.*✔</match>
+				<match>.*:d$</match>
+			</context>
+
+			<context id="failed" style-ref="failed">
+					<match>.*:f$</match>
 			</context>
 			
 			<context id="banner" style-ref="banner">
