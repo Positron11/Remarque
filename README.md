@@ -22,7 +22,7 @@ sudo chmod 0644 /usr/share/gtksourceview-4/language-specs/remarque.lang
 
 ```bash
 git clone https://github.com/Positron11/remarque.git
-sudo mv remarque/GTKSourceView-5/remarque.lang /usr/share/gtksourceview-4/language-specs/
+sudo mv remarque/GTKSourceView-5/remarque.lang /usr/share/gtksourceview-5/language-specs/
 sudo chmod 0644 /usr/share/gtksourceview-5/language-specs/remarque.lang
 ```
 
