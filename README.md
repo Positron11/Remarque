@@ -2,7 +2,7 @@
 
 # Remarqué
 
-Remarque is a tree-based note-taking language for Gedit. Its usefulness lies more in its structure than any syntax highlighting, so a particularly zen user might consider this non-essential (and it is, really).
+Remarque is a tree-based note-taking language for GTKSourceView editors. Its usefulness lies more in its structure than any syntax highlighting, so a particularly zen user might consider this non-essential (and it is, really).
 
 ## Installation and Usage
 
@@ -10,15 +10,25 @@ Remarqué is easy to install (and uninstall) and has no dependencies. Feel free 
 
 ### GTKSourceView Language
 
+#### GTKSourceView 4
+
 ```bash
 git clone https://github.com/Positron11/remarque.git
-sudo mv remarque/Gedit/remarque.lang /usr/share/gtksourceview-4/language-specs/
+sudo mv remarque/GTKSourceView-4/remarque.lang /usr/share/gtksourceview-4/language-specs/
 sudo chmod 0644 /usr/share/gtksourceview-4/language-specs/remarque.lang
 ```
 
-Select Remarqué in Gedit's language selector to use.
+#### GTKSourceView 5
 
-### Gedit Colour Scheme
+```bash
+git clone https://github.com/Positron11/remarque.git
+sudo mv remarque/GTKSourceView-5/remarque.lang /usr/share/gtksourceview-4/language-specs/
+sudo chmod 0644 /usr/share/gtksourceview-5/language-specs/remarque.lang
+```
+
+Select Remarqué in your editor's language selector.
+
+### GTKSourceView Colour Scheme
 
 Because of Remarqué's styling, you'll need to use a color scheme that supports Remarqué. At present, the only such schemes are the [Agenwulf color schemes](https://github.com/Positron11/agenwulf-color-scheme) (as shown in the example image - available in light and dark mode)
 
@@ -103,7 +113,7 @@ Remarqué offers a few text objects, essentially blocks of text with a somewhat 
 
 ### Text Formatting
 
-This part of Remarqué attempts to make use of what limited text formatting capabilities Gedit offers and [**requires a Gedit colour scheme that supports Remarqué**](#gedit-colour-scheme). GTKSourceViewLang's selector protocol unfortunately doesn't allow for nested selectors, so we'll have to make do with one style at a time (for now).
+This part of Remarqué attempts to make use of what limited text formatting capabilities basic text editors offer and [**requires a GTKSourceView colour scheme that supports Remarqué**](#gtksourceview-colour-scheme). GTKSourceViewLang's selector protocol unfortunately doesn't allow for nested selectors, so we'll have to make do with one style at a time (for now).
 
 - **Bold text:** Put text between ` ** ` with no space between the apostrophes and the text to be bold.
 	
