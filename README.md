@@ -2,7 +2,7 @@
 
 # Remarqué
 
-Remarque is a tree-based note-taking language for GTKSourceView editors. Its usefulness lies more in its structure than any syntax highlighting, so a particularly zen user might consider this non-essential (and it is, really).
+Remarque is a tree-based note-taking language for GTKSourceView editors. Its usefulness lies more in its structure than any syntax highlighting, so a particularly zen user might consider this non-essential (and it is, really). Supported by GTKSourceView-compliant editors such as Gedit and Gnome Text Editor.
 
 ## Installation and Usage
 
@@ -26,7 +26,7 @@ sudo mv remarque/GTKSourceView-5/remarque.lang /usr/share/gtksourceview-5/langua
 sudo chmod 0644 /usr/share/gtksourceview-5/language-specs/remarque.lang
 ```
 
-Select Remarqué in your editor's language selector.
+Select Remarqué in your editor's language selector. Save files with the `.rmq` extension.
 
 ### GTKSourceView Colour Scheme
 
