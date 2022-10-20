@@ -3,13 +3,13 @@
 
 
 <metadata>
-  <property name="mimetypes">text/plain</property>
-  <property name="globs">*.rmq</property>
+	<property name="mimetypes">text/plain</property>
+	<property name="globs">*.rmq</property>
 </metadata>
 
 
 <styles>
-  <style id="bold" name="bold" map-to="remarque:bold"/>
+	<style id="bold" name="bold" map-to="remarque:bold"/>
 	<style id="italic" name="italic" map-to="remarque:italic"/>
 	<style id="underline" name="underline" map-to="remarque:underline"/>
 	<style id="strikethrough" name="strikethrough" map-to="remarque:strikethrough"/>
@@ -26,45 +26,76 @@
 	<style id="tag" name="tag"	map-to="remarque:tag"/>
 	<style id="placeholder" name="placeholder" map-to="remarque:placeholder"/>
 	<style id="link" name="link" map-to="remarque:link"/>
+	<style id="style-marker" name="style-marker" map-to="remarque:style-marker"/>
 </styles>
 
 
 <definitions>
-  <context id="remarque">
+	<context id="remarque">
 		<include>
+			<context id="heading" style-ref="heading">
+				<match>^@.*$</match>
+			</context>
+			<context id="heading_line" style-ref="heading">
+				<match>^:=*:$</match>
+			</context>
+			
+			<context id="subheading" style-ref="subheading">
+				<match>^&amp;.*$</match>
+			</context>
+			<context id="subheading_line" style-ref="subheading">
+				<match>^\+-*\+$</match>
+			</context>
+			
 			<context id="bold" style-ref="bold">
-				<match>\*\*[^\* \t].*?(?&lt;!\\|\*| |\t)\*\*</match>
+				<match>(?&lt;=(?'a'#))(?!\s)(?:(?!\k'a').)+(?&lt;!\s)(?=\k'a')</match>
+			</context>
+			<context id="bold-marker" style-ref="style-marker">
+				<match>#(?=(?!\s)(?:(?!#).)+(?&lt;!\s)#)|(?=(?=(?'b'[\s\S]*))(?'c'#(?!\s)(?:(?!#).)+(?&lt;!\s)(?=\k'b'\z)|(?&lt;=(?=x^|(?&amp;c))[\s\S])))#</match>
 			</context>
 			
 			<context id="italic" style-ref="italic">
-				<match>\*[^\* \t].*?(?&lt;!\\|\*| |\t)\*</match>
+				<match>(?&lt;=(?'a'\*))(?!\s)(?:(?!\k'a').)+(?&lt;!\s)(?=\k'a')</match>  
 			</context>
-			
+			<context id="italic-marker" style-ref="style-marker">
+				<match>\*(?=(?!\s)(?:(?!\*).)+(?&lt;!\s)\*)|(?=(?=(?'b'[\s\S]*))(?'c'\*(?!\s)(?:(?!\*).)+(?&lt;!\s)(?=\k'b'\z)|(?&lt;=(?=x^|(?&amp;c))[\s\S])))\*</match>
+			</context>
+
 			<context id="underline" style-ref="underline">
-				<match>_[^_ \t].*?(?&lt;!\\|_| |\t)_</match>
+				<match>(?&lt;=(?'a'_))(?!\s)(?:(?!\k'a').)+(?&lt;!\s)(?=\k'a')</match>
 			</context>
-			
+			<context id="underline-marker" style-ref="style-marker">
+				<match>_(?=(?!\s)(?:(?!_).)+(?&lt;!\s)_)|(?=(?=(?'b'[\s\S]*))(?'c'_(?!\s)(?:(?!_).)+(?&lt;!\s)(?=\k'b'\z)|(?&lt;=(?=x^|(?&amp;c))[\s\S])))_</match>
+			</context>
+
 			<context id="strikethrough" style-ref="strikethrough">
-				<match>~[^~ \t].*?(?&lt;!\\|~| |\t)~</match>
+				<match>(?&lt;=(?'a'~))(?!\s)(?:(?!\k'a').)+(?&lt;!\s)(?=\k'a')</match>
 			</context>
-			
+			<context id="strikethrough-marker" style-ref="style-marker">
+				<match>~(?=(?!\s)(?:(?!~).)+(?&lt;!\s)~)|(?=(?=(?'b'[\s\S]*))(?'c'~(?!\s)(?:(?!~).)+(?&lt;!\s)(?=\k'b'\z)|(?&lt;=(?=x^|(?&amp;c))[\s\S])))~</match>
+			</context>
+
 			<context id="highlight" style-ref="highlight">
-				<match>\![^\! \t].*?(?&lt;!\\|\!| |\t)\!</match>
+				<match>(?&lt;=(?'a'!))(?!\s)(?:(?!\k'a').)+(?&lt;!\s)(?=\k'a')</match>
+			</context>
+			<context id="highlight-marker" style-ref="style-marker">
+				<match>!(?=(?!\s)(?:(?!!).)+(?&lt;!\s)!)|(?=(?=(?'b'[\s\S]*))(?'c'!(?!\s)(?:(?!!).)+(?&lt;!\s)(?=\k'b'\z)|(?&lt;=(?=x^|(?&amp;c))[\s\S])))!</match>
 			</context>
 			
 			<context id="inline-code" style-ref="inline-code">
-				<match>`[^` \t].*?(?&lt;!\\|`| |\t)`</match>
+				<match>(?&lt;=(?'a'`))(?!\s)(?:(?!\k'a').)+(?&lt;!\s)(?=\k'a')</match>
 			</context>
-		
+			<context id="inline-code-marker" style-ref="style-marker">
+				<match>`(?=(?!\s)(?:(?!`).)+(?&lt;!\s)`)|(?=(?=(?'b'[\s\S]*))(?'c'`(?!\s)(?:(?!`).)+(?&lt;!\s)(?=\k'b'\z)|(?&lt;=(?=x^|(?&amp;c))[\s\S])))`</match>
+			</context>
+	
 			<context id="tree" style-ref="tree" end-at-line-end="true">
 				<start>^\|</start>
 				<end>&gt;</end>
-				
 				<include>
 					<context id="enumeration" style-ref="enumeration">
-						<match>[0-9]+</match>
+						<match>[.0-9a-z]+</match>
 					</context>
-					
 					<context id="current" style-ref="current" end-parent="true">
 						<match>\|?=&gt;</match>
 					</context>
@@ -80,31 +111,15 @@
 			</context>
 			
 			<context id="banner" style-ref="banner">
-				<match>&lt;=\|.*$</match>
-			</context>
-			
-			<context id="heading" style-ref="heading">
-				<match>^@.*$</match>
-			</context>
-			
-			<context id="heading_line" style-ref="heading">
-				<match>^=*$</match>
-			</context>
-			
-			<context id="subheading" style-ref="subheading">
-				<match>^&amp;.*$</match>
-			</context>
-			
-			<context id="subheading_line" style-ref="subheading">
-				<match>^-*$</match>
+				<match>&lt;\|.*$</match>
 			</context>
 			
 			<context id="tag" style-ref="tag">
-				<match>\[(?! |\t)[^\[\]]+(?&lt;!\[|\]| |\t)\]</match>
+				<match>\[(?!\s)(?:(?![\[\]]).)+(?&lt;!\s)]</match>
 			</context>
 			
 			<context id="placeholder" style-ref="placeholder">
-				<match>\&lt;(?! |\t)[^\&lt;\&gt;]+(?&lt;!\&lt;|\&gt;| |\t)\&gt;</match>
+				<match>&lt;(?!\s)(?:(?![&lt;&gt;]).)+(?&lt;!\s)&gt;</match>
 			</context>
 			
 			<context id="link" style-ref="link">
@@ -114,4 +129,3 @@
 	</context>
 </definitions>
 </language>
-

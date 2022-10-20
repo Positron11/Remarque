@@ -1,9 +1,9 @@
 @FILE HEADING
-=============
+:===========:
 
 
 &Tree Example 
--------------
++-----------+
 |-> Level 1
 | |-> Level 2
 | | |-> Level 3
@@ -12,7 +12,7 @@
 
 
 &Enumeration, Indexing, and Productivity
-----------------------------------------
++--------------------------------------+
 |-> Nodes can be indexed like so: [2.1]
 |
 |-> Nodes can be enumerated [2.2]
@@ -26,9 +26,10 @@
 | |=> Item 4 (current) [2.3.4]
 
 
-&Text Formatting 
-----------------
+&Text Formatting
++--------------+
 |-> Text can be placed into <placeholders>
-|-> Lines of text can be tagged/commented <=|Comment/Tag
-|-> Text can be **Bold**, *Italic*, _underlined_, ~struck through~, and !highlighted! 
+|-> Text can be placed into `def inline_code_blocks():`
+|-> Lines of text can be tagged/commented <|Comment/Tag
+|-> Text can be #Bold#, *Italic*, _underlined_, ~struck through~, and !highlighted! 
 |-> Hyperlinks (https://en.wikipedia.org/wiki/Hyperlink) are automatically formatted
