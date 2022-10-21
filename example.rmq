@@ -7,29 +7,25 @@
 |-> Level 1
 | |-> Level 2
 | | |-> Level 3
-| | | |-> Level 4
-| | | | |-> And so on...
+| | | |-> And so on...
 
 
 &Enumeration, Indexing, and Productivity
 +--------------------------------------+
-|-> Nodes can be indexed like so: [2.1]
+|-> Nodes can be indexed [2.1]
+|1|-> And enumerated [2.1.1]
+|2|-> Item 2 [2.1.2]
 |
-|-> Nodes can be enumerated [2.2]
-|1|-> Item 1 [2.2.1]
-|2|-> Item 2 [2.2.2]
-|
-|-> Productivity (Todo) [2.3]
-| |-> Item 1 (to do) [2.3.1] 
-| |-> Item 2 (finished) [2.3.2] :d
-| |-> Item 3 (failed) [2.3.3] :f
-| |=> Item 4 (current) [2.3.4]
+|-> Productivity (Todo) [2.2]
+| |-> Item 1 (to do) [2.2.1] 
+| |-> Item 2 (finished) [2.2.2] :d
+| |-> Item 3 (failed) [2.2.3] :f
+| |=> Item 4 (current) [2.2.4]
 
 
 &Text Formatting
 +--------------+
-|-> Text can be placed into <placeholders>
-|-> Text can be placed into `def inline_code_blocks():`
 |-> Lines of text can be tagged/commented <|Comment/Tag
+|-> Text can be placed into <placeholders> and `def inline_code_blocks():`
 |-> Text can be #Bold#, *Italic*, _underlined_, ~struck through~, and !highlighted! 
 |-> Hyperlinks (https://en.wikipedia.org/wiki/Hyperlink) are automatically formatted
