@@ -1,31 +1,22 @@
-@FILE HEADING
-:===========:
+TITLE: Document Title
 
+1.1 Sections
+Basic section headings provided, enumerate for depth
 
-&Tree Example 
-+-----------+
-|-> Level 1
-| |-> Level 2
-| | |-> Level 3
-| | | |-> And so on...
+1.2 Text Formatting
+Text can be #bold#, *italic*, _underlined_, ~crossed out~, !highlighted!, 
+or `inline code`, and hyperlinks (https://www.google.com/) are 
+automatically formatted
 
+1.3 Text Objects
+Text can be put into <placeholders> or [tags]
 
-&Enumeration, Indexing, and Productivity
-+--------------------------------------+
-|-> Nodes can be indexed [2.1]
-|1|-> And enumerated [2.1.1]
-|2|-> Item 2 [2.1.2]
-|
-|-> Productivity (Todo) [2.2]
-| |-> Item 1 (to do) [2.2.1] 
-| |-> Item 2 (finished) [2.2.2] :d
-| |-> Item 3 (failed) [2.2.3] :f
-| |=> Item 4 (current) [2.2.4]
+2.1 Tree Structure
+-> Simple cascading format
+| [1]-> Nodes can be enumerated or given context
+| | [a]-> Item 1
+| | [b]-> Item 2
 
-
-&Text Formatting
-+--------------+
-|-> Lines of text can be tagged/commented <|Comment/Tag
-|-> Text can be placed into <placeholders> and `def inline_code_blocks():`
-|-> Text can be #Bold#, *Italic*, _underlined_, ~struck through~, and !highlighted! 
-|-> Hyperlinks (https://en.wikipedia.org/wiki/Hyperlink) are automatically formatted
+2.2 Task Status
+-> Completed :d
+-> Failed :f

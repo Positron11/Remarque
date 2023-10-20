@@ -1,136 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language id="remarque" name="Remarqué" version="2.0" _section="Source">
+  <metadata>
+	  <property name="mimetypes">text/plain</property>
+	  <property name="globs">*.rmq</property>
+  </metadata>
 
 
-<metadata>
-	<property name="mimetypes">text/plain</property>
-	<property name="globs">*.rmq</property>
-</metadata>
+  <!-- Styles for Agenwulf -->
+  <styles>
+	  <!-- Doctitle -->
+	  <style id="doctitle-tag" name="doctitle-tag"	map-to="remarque:doctitle-tag" />
+	  <style id="doctitle-name" name="doctitle-name"	map-to="remarque:doctitle-name" />	  
+	  
+	  <!-- Sections -->
+	  <style id="section-number" name="section-number" map-to="remarque:section-number" />
+	  <style id="section-name" name="section-name" map-to="remarque:section-name" />
+
+	  <!-- Text styles -->
+	  <style id="bold" name="bold" map-to="remarque:bold" />
+	  <style id="italic" name="italic" map-to="remarque:italic" />
+	  <style id="underline" name="underline" map-to="remarque:underline" />
+	  <style id="strikethrough" name="strikethrough" map-to="remarque:strikethrough" />
+	  <style id="highlight" name="highlight" map-to="remarque:highlight" />
+	  <style id="inline-code" name="inline-code" map-to="remarque:inline-code" />
+
+	  <!-- Style markers -->
+	  <style id="hidden-style-marker" name="hidden-style-marker" map-to="remarque:hidden-style-marker" />
+	  <style id="highlight-style-marker" name="highlight-style-marker" map-to="remarque:highlight-style-marker" />
+	  <style id="code-style-marker" name="code-style-marker" map-to="remarque:code-style-marker" />
+
+	  <!-- Tree styles -->
+	  <style id="tree" name="tree" map-to="remarque:tree" />
+	  <style id="enumeration" name="enumeration" map-to="remarque:enumeration" />
+	  <style id="leaf" name="leaf" map-to="remarque:leaf" />
+	  
+	  <!-- Productivity -->
+	  <style id="completed-item" name="completed-item" map-to="remarque:completed-item" />
+	  <style id="failed-marker" name="failed-marker" map-to="remarque:failed-marker" />
+	  <style id="done-marker" name="done-marker" map-to="remarque:done-marker" />
+
+	  <!-- Objects -->
+	  <style id="tag" name="tag"	map-to="remarque:tag" />
+	  <style id="banner" name="banner" map-to="remarque:banner" />
+	  <style id="placeholder" name="placeholder" map-to="remarque:placeholder" />
+
+	  <!-- Hyperlinks -->
+	  <style id="link" name="link" map-to="remarque:link" />
+  </styles>
 
 
-<!-- Styles for Agenwulf -->
-<styles>
-	<!-- Headings -->
-	<style id="heading" name="heading"	map-to="remarque:heading"/>
-	<style id="subheading" name="subheading" map-to="remarque:subheading"/>
-
-	<!-- Text styles -->
-	<style id="bold" name="bold" map-to="remarque:bold"/>
-	<style id="italic" name="italic" map-to="remarque:italic"/>
-	<style id="underline" name="underline" map-to="remarque:underline"/>
-	<style id="strikethrough" name="strikethrough" map-to="remarque:strikethrough"/>
-	<style id="highlight" name="highlight" map-to="remarque:highlight"/>
-	<style id="inline-code" name="inline-code" map-to="remarque:inline-code"/>
-
-	<!-- Style markers -->
-	<style id="style-marker" name="style-marker" map-to="remarque:style-marker"/>
-
-	<!-- Tree styles -->
-	<style id="tree" name="tree" map-to="remarque:tree"/>
-	<style id="done" name="done" map-to="remarque:done"/>
-	<style id="enumeration" name="enumeration"	map-to="remarque:enumeration"/>
-	
-	<!-- Productivity -->
-	<style id="failed" name="failed" map-to="def:error"/>
-	<style id="current" name="current" map-to="remarque:current"/>
-
-	<!-- Objects -->
-	<style id="tag" name="tag"	map-to="remarque:tag"/>
-	<style id="banner" name="banner" map-to="remarque:banner"/>
-	<style id="placeholder" name="placeholder" map-to="remarque:placeholder"/>
-
-	<!-- Hyperlinks -->
-	<style id="link" name="link" map-to="remarque:link"/>
-</styles>
+  <!-- Language definition -->
+  <definitions>
+	  <!-- Common -->
+	  <define-regex id="style-text">(?!\s)(?:(?!\k'a').)+(?&lt;!\s)(?=\k'a')</define-regex>
 
 
-<!-- Language definition -->
-<definitions>
-	<!-- Common -->
-	<define-regex id="style-text">(?!\s)(?:(?!\k'a').)+(?&lt;!\s)(?=\k'a')</define-regex>
+	  <!-- Main context -->
+	  <context id="remarque">
+		  <include>
+		    <!-- Document title -->
+			  <context id="doctitle">
+				  <match>^(TITLE:)\s(.*)$</match>
+				  
+				  <include>
+				    <context id="doctitle-tag" style-ref="doctitle-tag" sub-pattern="1" />
+				    <context id="doctitle-name" style-ref="doctitle-name" sub-pattern="2" />
+				  </include>
+			  </context>
+			  
+			  
+			  <!-- Sections -->
+			  <context id="subheading">
+				  <match>^([0-9](?:\.[0-9])*)\s(.*)$</match>
+				  
+				  <include>
+				    <context id="section-number" style-ref="section-number" sub-pattern="1" />
+				    <context id="section-name" style-ref="section-name" sub-pattern="2" />
+				  </include>
+			  </context>
 
-	<!-- Main context -->
-	<context id="remarque">
-		<include>
-			<!-- File heading -->
-			<context id="heading" style-ref="heading">
-				<match>^@.*$</match>
-			</context>
-			<context id="heading_line" style-ref="heading">
-				<match>^:=*:$</match>
-			</context>
-			
-			<!-- Subheadings -->
-			<context id="subheading" style-ref="subheading">
-				<match>^&amp;.*$</match>
-			</context>
-			<context id="subheading_line" style-ref="subheading">
-				<match>^\+-*\+$</match>
-			</context>
 
-			<!-- Text styles -->
-			<context id="bold" style-ref="bold">
-				<match>(?&lt;=(?'a'#))\%{style-text}</match>
-			</context>
-			<context id="italic" style-ref="italic">
-				<match>(?&lt;=(?'a'\*))\%{style-text}</match>  
-			</context>
-			<context id="underline" style-ref="underline">
-				<match>(?&lt;=(?'a'_))\%{style-text}</match>
-			</context>
-			<context id="strikethrough" style-ref="strikethrough">
-				<match>(?&lt;=(?'a'~))\%{style-text}</match>
-			</context>
-			<context id="highlight" style-ref="highlight">
-				<match>(?&lt;=(?'a'!))\%{style-text}</match>
-			</context>
-			<context id="inline-code" style-ref="inline-code">
-				<match>(?&lt;=(?'a'`))\%{style-text}</match>
-			</context>
+			  <!-- Text styles -->
+			  <context id="bold" style-ref="bold">
+				  <match>(?&lt;=(?'a'#))\%{style-text}</match>
+			  </context>
+			  
+			  <context id="italic" style-ref="italic">
+				  <match>(?&lt;=(?'a'\*))\%{style-text}</match>  
+			  </context>
+			  
+			  <context id="underline" style-ref="underline">
+				  <match>(?&lt;=(?'a'_))\%{style-text}</match>
+			  </context>
+			  
+			  <context id="strikethrough" style-ref="strikethrough">
+				  <match>(?&lt;=(?'a'~))\%{style-text}</match>
+			  </context>
+			  
+			  <context id="highlight" style-ref="highlight">
+				  <match>(?&lt;=(?'a'!))\%{style-text}</match>
+			  </context>
+			  
+			  <context id="inline-code" style-ref="inline-code">
+				  <match>(?&lt;=(?'a'`))\%{style-text}</match>
+			  </context>
 
-			<!-- Universal style marker identification -->
-			<context id="style-marker" style-ref="style-marker">
-				<match>(?'a'[#\*_~\!`])(?=(?'d'(?!\s)(?:(?!\k'a').)+(?&lt;!\s)\k'a')|(?=(?'b'.*))(?'c'^(?&gt;\k'a'(?&amp;d)|.)*\k'a'(?&amp;d)(?=\k'b'\z)|(?&lt;=(?=x^|(?&amp;c)).)))</match>
-			</context>
-	
-			<!-- Tree -->
-			<context id="tree" style-ref="tree" end-at-line-end="true">
-				<start>^\|</start>
-				<end>&gt;</end>
-				<include>
-					<context id="enumeration" style-ref="enumeration">
-						<match>[.0-9a-z]+</match>
-					</context>
-					<context id="current" style-ref="current" end-parent="true">
-						<match>\|?=&gt;</match>
-					</context>
-				</include>
-			</context>
-			
-			<!-- Productivity -->
-			<context id="done" style-ref="done">
-				<match>.*:d$</match>
-			</context>
-			<context id="failed" style-ref="failed">
-					<match>.*:f$</match>
-			</context>
-			
-			<!-- Objects -->
-			<context id="banner" style-ref="banner">
-				<match>&lt;=\|.*$</match>
-			</context>
-			<context id="tag" style-ref="tag">
-				<match>\[(?!\s)(?:(?![\[\]]).)+(?&lt;!\s)]</match>
-			</context>
-			<context id="placeholder" style-ref="placeholder">
-				<match>&lt;(?!\s)(?:(?![&lt;&gt;]).)+(?&lt;!\s)&gt;</match>
-			</context>
-			
-			<!-- Hyperlinks -->
-			<context id="link" style-ref="link">
-				<match>https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*)</match>
-			</context>
-		</include>
-	</context>
-</definitions>
+
+			  <!-- Style marker identification -->
+			  <context id="hidden-style-marker" style-ref="hidden-style-marker">
+				  <match>(?'a'[#\*_~])(?=(?'d'(?!\s)(?:(?!\k'a').)+(?&lt;!\s)\k'a')|(?=(?'b'.*))(?'c'^(?&gt;\k'a'(?&amp;d)|.)*\k'a'(?&amp;d)(?=\k'b'\z)|(?&lt;=(?=x^|(?&amp;c)).)))</match>
+			  </context>
+			  
+			  <context id="highlight-style-marker" style-ref="highlight-style-marker">
+				  <match>(?'a'[\!])(?=(?'d'(?!\s)(?:(?!\k'a').)+(?&lt;!\s)\k'a')|(?=(?'b'.*))(?'c'^(?&gt;\k'a'(?&amp;d)|.)*\k'a'(?&amp;d)(?=\k'b'\z)|(?&lt;=(?=x^|(?&amp;c)).)))</match>
+			  </context>
+			  
+			  <context id="code-style-marker" style-ref="code-style-marker">
+				  <match>(?'a'[`])(?=(?'d'(?!\s)(?:(?!\k'a').)+(?&lt;!\s)\k'a')|(?=(?'b'.*))(?'c'^(?&gt;\k'a'(?&amp;d)|.)*\k'a'(?&amp;d)(?=\k'b'\z)|(?&lt;=(?=x^|(?&amp;c)).)))</match>
+			  </context>
+	  
+	  
+			  <!-- Tree -->
+			  <context id="tree" style-ref="tree">
+				  <match>^\|(?:\s\|)*$|^(?:\|\s)*(\[[0-9a-zA-Z\s.]+\])?(->)</match>
+				  
+				  <include>
+				    <context id="enumeration" style-ref="enumeration" sub-pattern="1" />
+				    <context id="leaf" style-ref="leaf" sub-pattern="2" />
+				  </include>
+			  </context>
+			  
+			  
+			  <!-- Productivity -->
+			  <context id="productivity-item">
+				  <match>(.*)\s(?:(:f)|(:d))$</match>
+				  
+				  <include>
+				    <context id="completed-item" style-ref="completed-item" sub-pattern="1" />
+				    <context id="failed-marker" style-ref="failed-marker" sub-pattern="2" />
+				    <context id="done-marker" style-ref="done-marker" sub-pattern="3" />
+				  </include>
+			  </context>
+			  
+			  
+			  <!-- Objects -->			  
+			  <context id="tag" style-ref="tag">
+				  <match>\[(?!\s)(?:(?![\[\]]).)+(?&lt;!\s)]</match>
+			  </context>
+			  
+			  <context id="placeholder" style-ref="placeholder">
+				  <match>&lt;(?!\s)(?:(?![&lt;&gt;]).)+(?&lt;!\s)&gt;</match>
+			  </context>
+			  
+			  
+			  <!-- Hyperlinks -->
+			  <context id="link" style-ref="link">
+				  <match>https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*)</match>
+			  </context>
+		  </include>
+	  </context>
+  </definitions>
 </language>

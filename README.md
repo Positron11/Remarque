@@ -6,16 +6,15 @@ Remarque is a tree-based note-taking language for GTKSourceView editors. Its use
 
 ## Installation and Usage
 
-Remarqué is easy to install (and uninstall) and has no dependencies. Feel free to delete the folder cloned by the installation commands after you're done installing. 
+Remarqué is easy to install (and uninstall) and has no dependencies.
 
 ### GTKSourceView Language
-
-#### GTKSourceView 5
 
 ```bash
 git clone https://github.com/Positron11/remarque.git
 sudo mv remarque/GTKSourceView-5/remarque.lang /usr/share/gtksourceview-5/language-specs/
 sudo chmod 0644 /usr/share/gtksourceview-5/language-specs/remarque.lang
+rm -rf ./remarque
 ```
 
 Select Remarqué in your editor's language selector. Save files with the `.rmq` extension.
@@ -26,86 +25,33 @@ Because of Remarqué's styling, you'll need to use a color scheme that supports 
 
 ### Font
 
-I recommend that you use a [Nerd Font](https://www.nerdfonts.com/font-downloads) that has support for the necessary glyphs (look for a continuous-looking `=>`), for the best possible UI. Not necessary, but it'll look a lot better. The [Fira Code](https://fonts.google.com/specimen/Fira+Code?query=fira+code) font works especially well.
+Basically any font that had a good-looking `->` ligature. Not necessary, but it'll look a lot better. The font in the example image is [Maple Mono](https://github.com/subframe7536/maple-font).
 
 ## Syntax
 
 All of Remarqué (except text formatting) works without any special language and highlighting support - it's a way of writing rather than an actual language. See below for guidelines.
 
-### Headings and Sections
+### Doctitle and Sections
 
-We recommend two lines of space between each section, before and after. Not required, it just looks nice that way. We also recommend no space between heading lines and their content
+We recommend at least one line of space between each section, before and after. Not required, it just looks nice that way. We also recommend no space between heading lines and their content. All headings must be on their own line.
 
-- **Document heading:** Begin line with ` @ `, space after is optional. Follow with a line of ` = ` surrounded by ` : `, preferably of the same length as the heading.
-
-	```
-	@FILE HEADING
-	:===========:
-	```
-
-- **Section heading:** Begin line with ` & `, space after is optional. Follow with a line of ` - ` surrounded by ` + `, preferably of the same length as the heading.
+- **Document title:** Begin line with `TITLE:` and a space after.
 
 	```
-	&Section Heading
-	+--------------+
+	TITLE: Document Title
 	```
 
-### Tree Structure
-
-Trees follow a simple, visually intuitive structure comprised of stacked ` |-> ` components. Using the right font greatly enhances the Remarqué tree experience.
-
-- **Basic example:** Trees can extend to as many levels as required. There are no real guidelines for spacing within trees, but we suggest proceeding as shown below. Remember to maintain the level you're on with a ` | ` when leaving a space.
+- **Section heading:** Begin line with a section number, with depth delimited with `.` (ie. `1.5.2...`), and a space after is optional.
 
 	```
-	|-> Level 1
-	| |-> Level 2
-	| | |-> Level 3
-	| |
-	| |-> Another level 2
-	|
-	|-> And so on...
-	```
-
-- **Enumerating trees:** Enumerate trees by adding numbers, lowercase letters, or ` . ` in the empty space between vertical branches as shown below.
-
-	```
-	|-> Enumerated list
-	|1|-> Item 1
-	|2|-> Item 2
-	|3|-> Item 3
-	```
-
-### Text Objects
-
-Remarqué offers a few text objects, essentially blocks of text with a somewhat defined purpose.
-
-- **Tags:** Mainly used for indexing list nodes, but can be used for anything else. Put text between square brackets (` [...] `) with no space between the brackets and the contained text.
-	
-	```
-	|-> List node [5.3.7]
-	```
-
-- **Banners:** Can be used to add comments and notes to list nodes. Put text after ` <=| `, which should be placed at the end of the line, preferably with a space before.
-	
-	```
-	|-> List node <=|Some notes about this node
-	```
-
-- **Placeholders:** Put text between angle brackets (` <...> `) with no space between the brackets and the contained text.
-	
-	```
-	<placeholder text>
-	```
-
-- **Inline code block:** Put code between `` ` `` with no space between the backticks and the code to be formatted.
-	
-	```
-	`def function():`  
+	1 Section Heading
+	⋮
+	2.3.1 Sub-Subsection Heading
 	```
 
 ### Text Formatting
 
-This part of Remarqué attempts to make use of what limited text formatting capabilities basic text editors offer and [**requires a GTKSourceView colour scheme that supports Remarqué**](#gtksourceview-colour-scheme). GTKSourceViewLang's selector protocol unfortunately doesn't allow for nested selectors, so we'll have to make do with one style at a time (for now). Style markers (` * `, ` ~ `, ` ! `, etc.) will seem to disappear when they've been applied, but they're still there, they're just very small.
+This part of Remarqué attempts to make use of what limited text formatting capabilities basic text editors offer and [**requires a GTKSourceView colour scheme that supports Remarqué**](#gtksourceview-colour-scheme). GTKSourceViewLang's selector protocol unfortunately doesn't allow for nested selectors, so we'll have to make do with one style at a time (for now). Style markers (`*`, `~`, `_`, etc.) will seem to disappear when they've been applied, but they're still there, they're just very small.
 
 - **Bold text:** Put text between ` # ` with no space between the hashtag and the text to be made bold.
 	
@@ -138,6 +84,59 @@ This part of Remarqué attempts to make use of what limited text formatting capa
 	```
 
 - **Hyperlinks:** Hyperlinks are automatically formatted
+
+### Text Objects
+
+Remarqué offers a few text objects, essentially blocks of text with a somewhat defined purpose.
+
+- **Tags:** Put text between square brackets with no space between the brackets and the contained text. An example usage:
+	
+	```
+	[20/10/2023] #Some Notes#
+	-> Cillum pariatur occaecat magna 
+	-> Minim non aliquip quis eu consectetur
+	-> Nisi et elit eu dolor tempor qui
+	```
+
+- **Placeholders:** Put text between angle brackets with no space between the brackets and the contained text.
+	
+	```
+	Dear <placeholder name>,
+
+	I hope this email finds you in the lowest of spirits... 
+	```
+
+- **Inline code block:** Put code between `` ` `` with no space between the backticks and the code to be formatted.
+	
+	```
+	`char* function(void);`  
+	```
+
+### Tree Structure
+
+Trees follow a simple, visually intuitive structure comprised of stacked `->` components. Using the right font greatly enhances the Remarqué tree experience.
+
+- **Basic example:** Trees can extend to as many levels as required. Maintain the level you're on with a `|` proceeded by a space.
+
+	```
+	-> Level 1
+	| -> Level 2
+	| | -> Level 3
+	| |
+	| -> Another level 2
+	|
+	-> And so on...
+	```
+
+- **Enumerating trees:** Enumerate trees by adding numbers, lowercase letters, spaces, or `.` in square braces immediately preceding the arrow of the desired node/leaf
+
+	```
+	-> Enumerated list
+	| [1]-> Item 1
+	| [2]-> Item 2
+	| | [ i]-> Item 3
+	| | [ii]-> Item 4
+	```
 
 ### Productivity
 
