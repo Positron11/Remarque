@@ -31,7 +31,8 @@
 
 	  <!-- Tree styles -->
 	  <style id="tree" name="tree" map-to="remarque:tree" />
-	  <style id="enumeration" name="enumeration" map-to="remarque:enumeration" />
+	  <style id="enumeration-brackets" name="enumeration-brackets" map-to="remarque:enumeration-brackets" />
+	  <style id="enumeration-content" name="enumeration-content" map-to="remarque:enumeration-content" />
 	  <style id="leaf" name="leaf" map-to="remarque:leaf" />
 	  
 	  <!-- Productivity -->
@@ -122,11 +123,12 @@
 	  
 			  <!-- Tree -->
 			  <context id="tree" style-ref="tree">
-				  <match>^\|(?:\s\|)*$|^(?:\|\s)*(\[[0-9a-zA-Z\s.]+\])?(->)</match>
+				  <match>^\|(?:\s\|)*$|^(?:\|\s)*(\[([0-9a-zA-Z\s.]+)\])?(->)</match>
 				  
 				  <include>
-				    <context id="enumeration" style-ref="enumeration" sub-pattern="1" />
-				    <context id="leaf" style-ref="leaf" sub-pattern="2" />
+				    <context id="enumeration-content" style-ref="enumeration-content" sub-pattern="2" />
+				    <context id="enumeration-brackets" style-ref="enumeration-brackets" sub-pattern="1" />
+				    <context id="leaf" style-ref="leaf" sub-pattern="3" />
 				  </include>
 			  </context>
 			  
