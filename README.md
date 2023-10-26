@@ -21,7 +21,7 @@ Select Remarqué in your editor's language selector. Save files with the `.rmq` 
 
 ### GTKSourceView Colour Scheme
 
-Because of Remarqué's styling, you'll need to use a color scheme that supports Remarqué. At present, the only such schemes are the [Agenwulf color schemes](https://github.com/Positron11/agenwulf-color-scheme) (as shown in the example image - available in light and dark mode)
+Because of Remarqué's styling, you'll need to use a color scheme that supports Remarqué. At present, the only such schemes are the [Agenwulf color scheme](https://github.com/Positron11/agenwulf) (as shown in the example image - available in light and dark mode)
 
 ### Font
 
